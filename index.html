@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Q! Donuts Araras | Donuts artesanais e sobremesas em Araras, SP</title>
+  <meta name="description" content="Q! Donuts Araras: donuts macios, recheados e coloridos, com cobertura de chocolate, morango, Nutella e muito mais. Monte seu pedido e finalize pelo WhatsApp.">
+  <meta name="theme-color" content="#ffd6e7">
+  <meta property="og:title" content="Q! Donuts Araras | Seu momento mais doce começa aqui!">
+  <meta property="og:description" content="Donuts irresistíveis, sabores incríveis e momentos especiais em cada mordida. Peça pelo WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+/* ==========================================================
+   Q! DONUTS ARARAS - Estilos (mobile first)
+   Tablet: 769px+  |  Desktop: 1200px+
+   ========================================================== */
+:root {
+  --rosa: #ff4d94;
+  --rosa-forte: #d91c6c;
+  --rosa-medio: #ffb3d1;
+  --rosa-claro: #ffd6e7;
+  --rosa-suave: #ffe9f1;
+  --choco: #4a2418;
+  --choco-escuro: #33170f;
+  --creme: #fff4e6;
+  --branco: #ffffff;
+  --menta: #7fd6c8;
+  --amarelo: #ffd23f;
+  --verde-wpp: #118a47;
+
+  --fonte-titulo: "Bagel Fat One", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+  --fonte-texto: "Nunito", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --raio: 26px;
+  --sombra: 0 10px 28px rgba(74, 36, 24, 0.12);
+  --sombra-forte: 0 18px 40px rgba(74, 36, 24, 0.2);
+  --header-h: 68px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); }
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--choco);
+  background: var(--creme);
+  -webkit-font-smoothing: antialiased;
+}
+body.lock { overflow: hidden; }
+img, svg { max-width: 100%; }
+h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 400; line-height: 1.1; margin: 0; letter-spacing: 0.005em; }
+p { margin: 0 0 1em; }
+ul { list-style: none; margin: 0; padding: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--rosa-forte); outline-offset: 3px; border-radius: 6px; }
+
+.container { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--choco); color: #fff; padding: 10px 16px; border-radius: 10px; z-index: 200; }
+.skip:focus { left: 8px; }
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 0.8em 1.5em; border-radius: 999px; border: 2px solid transparent;
+  font: 800 1rem/1.2 var(--fonte-texto); text-decoration: none; cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease, color 0.18s ease;
+  text-align: center;
+}
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background: var(--rosa-forte); color: #fff; box-shadow: 0 8px 18px rgba(217, 28, 108, 0.32); }
+.btn-primary:hover { background: #b9135a; transform: translateY(-2px); }
+.btn-outline { border-color: var(--choco); color: var(--choco); background: transparent; }
+.btn-outline:hover { background: var(--choco); color: #fff; }
+.btn-wpp { background: var(--verde-wpp); color: #fff; }
+.btn-wpp:hover { background: #0c6e38; transform: translateY(-2px); }
+.btn-block { width: 100%; }
+.btn-add { background: var(--choco); color: #fff; width: 100%; padding: 0.7em 0.9em; font-size: 0.9rem; }
+.btn-add:hover { background: var(--rosa-forte); }
+.btn-add.added { background: var(--verde-wpp); }
+
+/* ---------- Cabeçalho ---------- */
+.header {
+  position: sticky; top: 0; z-index: 100; height: var(--header-h);
+  background: rgba(255, 244, 230, 0.92); backdrop-filter: blur(10px);
+  transition: box-shadow 0.2s ease;
+}
+.header.scrolled { box-shadow: 0 6px 20px rgba(74, 36, 24, 0.12); }
+.header-in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+.logo { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.logo-mark { width: 44px; height: 44px; flex: none; }
+.logo-text { font-family: var(--fonte-titulo); font-size: 1.45rem; line-height: 1; color: var(--rosa-forte); display: flex; align-items: baseline; gap: 5px; flex-wrap: wrap; }
+.logo-text b { font-weight: 400; color: var(--choco); }
+.logo-text small { font: 800 0.72rem var(--fonte-texto); color: var(--choco); width: 100%; margin-top: 2px; letter-spacing: 0.04em; }
+
+.header-actions { display: flex; align-items: center; gap: 10px; }
+.head-wpp { display: none; padding: 0.6em 1.1em; font-size: 0.9rem; }
+
+.cart-btn {
+  position: relative; width: 46px; height: 46px; border-radius: 50%; border: 0;
+  background: var(--choco); color: #fff; display: grid; place-items: center; cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+.cart-btn:hover { background: var(--rosa-forte); }
+.cart-btn svg { width: 22px; height: 22px; }
+.cart-count {
+  position: absolute; top: -4px; right: -4px; min-width: 22px; height: 22px; padding: 0 5px;
+  border-radius: 999px; background: var(--rosa-forte); color: #fff; font: 800 0.75rem/22px var(--fonte-texto);
+  text-align: center; border: 2px solid var(--creme); transform: scale(0); transition: transform 0.2s ease;
+}
+.cart-count.has { transform: scale(1); }
+.cart-btn.bump { animation: bump 0.45s ease; }
+@keyframes bump { 30% { transform: scale(1.2) rotate(-8deg); } 60% { transform: scale(0.95); } }
+
+.burger { width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--choco); background: transparent; display: grid; place-content: center; gap: 5px; cursor: pointer; }
+.burger span { display: block; width: 20px; height: 2.5px; background: var(--choco); border-radius: 2px; transition: transform 0.2s ease, opacity 0.2s ease; }
+.burger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* menu mobile (dropdown) */
+.nav {
+  position: absolute; top: 100%; left: 0; right: 0; background: var(--creme);
+  display: flex; flex-direction: column; padding: 8px 20px 22px; gap: 2px;
+  box-shadow: 0 18px 28px rgba(74, 36, 24, 0.14);
+  opacity: 0; visibility: hidden; transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+.nav.open { opacity: 1; visibility: visible; transform: none; }
+.nav a:not(.btn) { padding: 14px 6px; font-weight: 800; text-decoration: none; border-bottom: 1px dashed var(--rosa-medio); }
+.nav a:not(.btn):hover { color: var(--rosa-forte); }
+.nav-wpp { margin-top: 14px; }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; background: var(--rosa-claro); overflow: hidden; padding: 36px 0 110px; }
+.sprinkles { position: absolute; inset: 0; pointer-events: none; }
+.sprinkles i { position: absolute; width: 14px; height: 5px; border-radius: 3px; opacity: 0.75; }
+.hero-in { position: relative; display: grid; gap: 28px; align-items: center; }
+.hero h1 { font-size: clamp(2.5rem, 10vw, 4.8rem); color: var(--choco); }
+.hero-text p { font-size: 1.12rem; max-width: 34ch; margin-top: 18px; }
+.hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.hero-text .hero-local { font-weight: 800; font-size: 0.95rem; margin: 22px 0 0; color: var(--rosa-forte); }
+
+.hero-art { position: relative; width: min(100%, 440px); aspect-ratio: 1 / 0.95; margin: 0 auto; }
+.stack { position: absolute; opacity: 0; animation: drop 0.8s cubic-bezier(0.3, 1.4, 0.5, 1) forwards; }
+.stack .donut { filter: drop-shadow(0 14px 14px rgba(74, 36, 24, 0.28)); }
+.s1 { width: 62%; left: 0; bottom: 0; transform: rotate(-8deg); animation-delay: 0.1s; }
+.s2 { width: 58%; right: 0; bottom: 8%; transform: rotate(10deg); animation-delay: 0.3s; z-index: 2; }
+.s3 { width: 56%; left: 22%; top: 0; transform: rotate(-3deg); animation-delay: 0.5s; z-index: 3; }
+@keyframes drop {
+  from { opacity: 0; translate: 0 -60px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+.wave { position: absolute; left: 0; width: 100%; height: 70px; display: block; fill: var(--creme); }
+.hero .wave { bottom: -1px; }
+
+/* ---------- Seções ---------- */
+.section { padding: 64px 0; }
+.section-head { text-align: center; margin-bottom: 36px; }
+.section-head h2 { font-size: clamp(2rem, 6.5vw, 3rem); }
+.section-head p { max-width: 52ch; margin: 12px auto 0; }
+.note { text-align: center; font-size: 0.9rem; margin: 28px auto 0; opacity: 0.85; max-width: 60ch; }
+
+/* Donut ilustrações */
+.donut { display: block; width: 100%; height: auto; }
+
+/* ---------- Cardápio ---------- */
+.menu { background: var(--creme); }
+.grid-menu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.card {
+  background: #fff; border-radius: var(--raio); padding: 14px 12px 14px; box-shadow: var(--sombra);
+  display: flex; flex-direction: column; text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--sombra-forte); }
+.card-art { position: relative; width: 100%; max-width: 170px; aspect-ratio: 1; margin: 0 auto 14px; }
+.ring { position: absolute; inset: 0; border-radius: 50%; background: var(--rosa-medio); }
+.ring::after { content: ""; position: absolute; inset: 9%; border-radius: 50%; background: var(--rosa-claro); }
+.card-donut { position: absolute; inset: 14%; transition: transform 0.35s ease; }
+.card-donut img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.card:hover .card-donut { transform: rotate(14deg) scale(1.06); }
+.card .donut { filter: drop-shadow(0 6px 6px rgba(74, 36, 24, 0.25)); }
+.card h3 { font-size: 1.12rem; margin-bottom: 6px; }
+.card p { font-size: 0.85rem; line-height: 1.45; flex: 1; margin-bottom: 12px; }
+.card-foot { display: grid; gap: 10px; }
+.preco { font: 800 1.2rem var(--fonte-texto); color: var(--rosa-forte); }
+
+/* ---------- Sobre ---------- */
+.about { background: var(--rosa-suave); }
+.about-in { display: grid; gap: 36px; align-items: center; }
+.about-art { max-width: 420px; width: 100%; margin: 0 auto; }
+.about-art .box-grid { grid-template-columns: repeat(2, 1fr); }
+.about-text h2 { font-size: clamp(2rem, 7vw, 3.1rem); margin-bottom: 18px; }
+.about-text p { max-width: 58ch; }
+.about-text .btn { margin-top: 8px; }
+
+/* caixa de donuts */
+.box { background: #f1d3a4; border-radius: 28px; padding: 16px; box-shadow: var(--sombra-forte), inset 0 0 0 6px #fff4e6; }
+.box-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; background: #fbe6c6; border-radius: 18px; padding: 10px; }
+.box-cell .donut { filter: drop-shadow(0 4px 4px rgba(74, 36, 24, 0.28)); }
+/* combinação */
+.combo { position: relative; width: 100%; aspect-ratio: 1 / 0.9; }
+.combo-d { position: absolute; width: 54%; }
+.combo-d .donut { filter: drop-shadow(0 8px 8px rgba(74, 36, 24, 0.28)); }
+.combo-0 { left: 2%; top: 22%; transform: rotate(-10deg); }
+.combo-1 { right: 2%; top: 22%; transform: rotate(9deg); z-index: 2; }
+.combo-2 { left: 23%; top: -2%; transform: rotate(3deg); z-index: 3; }
+.single { width: 100%; }
+
+/* ---------- Diferenciais ---------- */
+.perks { background: #fff; }
+.perk-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 14px; }
+.perk { text-align: center; }
+.perk-ico {
+  width: 72px; height: 72px; margin: 0 auto 14px; display: grid; place-items: center; border-radius: 50%;
+  background: var(--rosa-claro); color: var(--rosa-forte); box-shadow: inset 0 0 0 5px #fff, 0 0 0 3px var(--rosa-medio);
+}
+.perk-ico svg { width: 32px; height: 32px; }
+.perk h3 { font-size: 1.1rem; margin-bottom: 6px; }
+.perk p { font-size: 0.9rem; margin: 0 auto; max-width: 24ch; }
+
+/* ---------- Galeria ---------- */
+.gallery { background: var(--rosa-claro); }
+.gal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.gal { position: relative; margin: 0; border-radius: var(--raio); background: var(--bg, var(--rosa-medio)); overflow: hidden; aspect-ratio: 1; display: grid; place-items: center; padding: 14px; box-shadow: var(--sombra); }
+.gal-art { width: 78%; transition: transform 0.4s ease; }
+.gal-art img { width: 100%; height: 100%; object-fit: cover; }
+.gal:hover .gal-art { transform: scale(1.06) rotate(3deg); }
+.gal .box { padding: 10px; border-radius: 20px; }
+.gal .box-grid { gap: 5px; padding: 6px; }
+.gal figcaption {
+  position: absolute; left: 10px; right: 10px; bottom: 10px; padding: 6px 10px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92); font-weight: 800; font-size: 0.8rem; text-align: center;
+}
+.gal-art:has(.combo), .gal-art:has(.box) { width: 88%; margin-bottom: 18px; }
+
+/* ---------- Depoimentos ---------- */
+.reviews { background: var(--creme); }
+.rev-grid { display: grid; gap: 16px; }
+.rev { margin: 0; background: #fff; border-radius: var(--raio); padding: 24px; box-shadow: var(--sombra); position: relative; }
+.rev::before { content: "\201C"; position: absolute; top: 4px; right: 20px; font: 5rem/1 var(--fonte-titulo); color: var(--rosa-claro); }
+.stars { display: flex; gap: 3px; margin-bottom: 12px; }
+.stars svg { width: 22px; height: 22px; }
+.stars .on { fill: var(--amarelo); stroke: #e0a800; stroke-width: 1; }
+.stars .off { fill: none; stroke: var(--rosa-medio); stroke-width: 1.5; }
+.rev blockquote { margin: 0 0 14px; position: relative; }
+.rev figcaption { font-weight: 800; }
+.is-placeholder blockquote, .is-placeholder figcaption { opacity: 0.6; }
+
+/* ---------- Comunidade ---------- */
+.community { position: relative; overflow: hidden; padding: 110px 0 80px; background: linear-gradient(135deg, #ff4d94, #ff86b6 60%, #ffb3d1); }
+.wave-top { top: -1px; bottom: auto; fill: var(--creme); height: 60px; }
+.community-art .ca { position: absolute; width: 44vw; max-width: 300px; opacity: 0.95; }
+.community-art .donut { filter: drop-shadow(0 12px 14px rgba(74, 36, 24, 0.28)); }
+.ca1 { left: -14%; bottom: -10%; transform: rotate(-20deg); }
+.ca2 { right: -12%; top: 12%; transform: rotate(25deg); }
+.ca3 { right: 6%; bottom: -16%; transform: rotate(8deg); width: 34vw; }
+.glass {
+  position: relative; max-width: 640px; margin: 0 auto; text-align: center; padding: 34px 24px;
+  border-radius: 30px; background: rgba(51, 23, 15, 0.72); backdrop-filter: blur(8px); color: #fff;
+  box-shadow: var(--sombra-forte);
+}
+.glass h2 { font-size: clamp(1.7rem, 6vw, 2.5rem); margin-bottom: 12px; }
+.glass p { margin-bottom: 22px; }
+.glass-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+/* ---------- Contato ---------- */
+.contact { background: var(--creme); }
+.contact-in { display: grid; gap: 36px; align-items: center; }
+.contact h2 { font-size: clamp(2rem, 7vw, 3rem); }
+.contact-lead { margin: 10px 0 22px; font-weight: 700; }
+.info { margin: 0 0 26px; display: grid; gap: 16px; }
+.info dt { font-weight: 800; color: var(--rosa-forte); font-size: 0.9rem; }
+.info dd { margin: 2px 0 0; }
+.info a { text-underline-offset: 3px; }
+.vazio { opacity: 0.55; font-style: italic; }
+.contact-card { background: var(--rosa-claro); border-radius: 36px; padding: 36px 30px 24px; max-width: 420px; width: 100%; margin: 0 auto; box-shadow: var(--sombra); }
+
+/* ---------- Rodapé ---------- */
+.footer { background: var(--choco-escuro); color: #fbe9d8; padding: 54px 0 22px; }
+.footer-in { display: grid; gap: 30px; }
+.footer .logo-text { color: var(--rosa); }
+.footer .logo-text b, .footer .logo-text small { color: #fff; }
+.f-brand p { margin-top: 14px; max-width: 38ch; font-size: 0.95rem; }
+.footer h3 { font-size: 1.15rem; color: #fff; margin-bottom: 12px; }
+.footer li { margin-bottom: 8px; }
+.footer a { text-decoration: none; }
+.footer li a:hover { color: var(--rosa); text-decoration: underline; }
+.copy { margin-top: 34px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.15); font-size: 0.85rem; }
+.copy p { margin: 0; }
+
+/* ---------- WhatsApp flutuante ---------- */
+.fab {
+  position: fixed; right: 16px; bottom: 16px; width: 56px; height: 56px; border-radius: 50%;
+  background: var(--verde-wpp); color: #fff; display: grid; place-items: center; z-index: 90;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28); transition: transform 0.2s ease;
+}
+.fab:hover { transform: scale(1.08); }
+.fab svg { width: 30px; height: 30px; }
+
+/* ---------- Carrinho (gaveta) ---------- */
+.overlay { position: fixed; inset: 0; background: rgba(51, 23, 15, 0.5); z-index: 150; opacity: 0; transition: opacity 0.25s ease; }
+.overlay.show { opacity: 1; }
+.drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; width: 100%; max-width: 440px; z-index: 160;
+  background: var(--creme); display: flex; flex-direction: column;
+  transform: translateX(100%); visibility: hidden;
+  transition: transform 0.3s ease, visibility 0s linear 0.3s;
+  box-shadow: -14px 0 40px rgba(0, 0, 0, 0.2);
+}
+.drawer.open { transform: none; visibility: visible; transition: transform 0.3s ease; }
+.drawer-head { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; background: var(--rosa-claro); }
+.drawer-head h2 { font-size: 1.6rem; }
+.close { width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--choco); color: #fff; display: grid; place-items: center; cursor: pointer; }
+.close svg { width: 20px; height: 20px; }
+.drawer-body { flex: 1; overflow-y: auto; padding: 14px 20px; }
+.cart-empty { text-align: center; padding: 40px 10px; font-weight: 700; }
+.ci { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; padding: 14px 0; border-bottom: 1px dashed var(--rosa-medio); align-items: center; }
+.ci-thumb { width: 64px; height: 64px; border-radius: 50%; background: var(--rosa-claro); padding: 7px; }
+.ci-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.ci-info { display: grid; gap: 2px; font-size: 0.92rem; line-height: 1.3; }
+.ci-info span { font-size: 0.82rem; opacity: 0.8; }
+.ci-side { text-align: right; display: grid; gap: 6px; justify-items: end; }
+.rm { background: none; border: 0; color: var(--rosa-forte); font: 800 0.8rem var(--fonte-texto); cursor: pointer; text-decoration: underline; padding: 2px; }
+.qty { display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; background: #fff; border-radius: 999px; padding: 3px; width: max-content; }
+.qty button { width: 30px; height: 30px; border-radius: 50%; border: 0; background: var(--rosa-claro); color: var(--choco); font: 800 1.1rem/1 var(--fonte-texto); cursor: pointer; }
+.qty button:hover { background: var(--rosa-forte); color: #fff; }
+.qty output { min-width: 26px; text-align: center; font-weight: 800; }
+
+.cart-form { margin-top: 20px; display: grid; gap: 6px; }
+.cart-form label { font-weight: 800; font-size: 0.9rem; margin-top: 6px; }
+.cart-form input, .cart-form textarea {
+  width: 100%; padding: 12px 14px; border: 2px solid var(--rosa-medio); border-radius: 16px;
+  font: inherit; color: var(--choco); background: #fff; resize: vertical;
+}
+.cart-form input:focus, .cart-form textarea:focus { outline: none; border-color: var(--rosa-forte); }
+.err { color: #b3123f; font-weight: 700; font-size: 0.85rem; margin: 0; }
+
+.drawer-foot { padding: 16px 20px 20px; background: #fff; box-shadow: 0 -8px 20px rgba(74, 36, 24, 0.08); display: grid; gap: 8px; }
+.drawer-foot .row { display: flex; justify-content: space-between; }
+.drawer-foot .total { font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; }
+.drawer-foot .total strong { color: var(--rosa-forte); }
+.link-btn { background: none; border: 0; font: 700 0.85rem var(--fonte-texto); color: var(--choco); text-decoration: underline; cursor: pointer; padding: 6px; }
+
+.toast {
+  position: fixed; left: 50%; bottom: 84px; transform: translate(-50%, 20px); z-index: 120; width: max-content;
+  background: var(--choco); color: #fff; padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: 0.9rem;
+  box-shadow: var(--sombra-forte); opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease;
+  max-width: calc(100% - 32px); text-align: center;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ==========================================================
+   TABLET: 769px a 1199px
+   ========================================================== */
+@media (min-width: 769px) {
+  :root { --header-h: 76px; }
+  .container { padding: 0 32px; }
+  .burger, .nav-wpp { display: none; }
+  .head-wpp { display: inline-flex; }
+
+  .nav {
+    position: static; flex-direction: row; align-items: center; padding: 0; gap: 20px;
+    background: none; box-shadow: none; opacity: 1; visibility: visible; transform: none;
+  }
+  .nav a:not(.btn) { padding: 6px 2px; border: 0; font-size: 0.95rem; }
+
+  .hero { padding: 56px 0 130px; }
+  .hero-in { grid-template-columns: 1.1fr 1fr; gap: 24px; }
+  .section { padding: 84px 0; }
+
+  .grid-menu { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { padding: 20px 16px; }
+  .card h3 { font-size: 1.2rem; }
+  .card p { font-size: 0.92rem; }
+
+  .about-in { grid-template-columns: 1fr 1fr; gap: 56px; }
+  .perk-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .gal-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .rev-grid { grid-template-columns: repeat(3, 1fr); }
+  .contact-in { grid-template-columns: 1fr 1fr; gap: 56px; }
+  .footer-in { grid-template-columns: 1.6fr 1fr 1fr; }
+  .glass { padding: 46px 40px; }
+  .community-art .ca { width: 26vw; }
+  .ca3 { width: 20vw; }
+  .fab { right: 24px; bottom: 24px; }
+  .toast { bottom: 32px; }
+  .wave { height: 90px; }
+}
+
+/* ==========================================================
+   DESKTOP: 1200px+
+   ========================================================== */
+@media (min-width: 1200px) {
+  .nav { gap: 30px; }
+  .nav a:not(.btn) { font-size: 1rem; }
+  .hero { padding: 72px 0 150px; }
+  .grid-menu { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .gal-grid { grid-template-columns: repeat(4, 1fr); }
+  .gal-3, .gal-5 { grid-column: span 2; aspect-ratio: auto; }
+  .gal-art:has(.combo), .gal-art:has(.box) { width: 70%; }
+  .community { padding: 140px 0 110px; }
+  .community-art .ca { width: 300px; }
+  .ca3 { width: 230px; }
+  .wave { height: 110px; }
+}
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+  .stack { opacity: 1; }
+}
+
+</style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    "name": "Q! Donuts Araras",
+    "description": "Loja de donuts, doces e sobremesas em Araras, SP.",
+    "telephone": "+5519998705938",
+    "areaServed": "Araras, SP"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#cardapio">Ir para o cardápio</a>
+
+  <!-- ============ CABEÇALHO ============ -->
+  <header class="header" id="topo">
+    <div class="container header-in">
+      <a href="#inicio" class="logo" aria-label="Q! Donuts Araras - início">
+        <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="30" cy="32" r="22" fill="none" stroke="#ff4d94" stroke-width="12"/>
+          <circle cx="30" cy="32" r="22" fill="none" stroke="#ffb3d1" stroke-width="3" stroke-dasharray="40 100" stroke-linecap="round" transform="rotate(-120 30 32)"/>
+          <path d="M36 42 L52 58" stroke="#4a2418" stroke-width="7" stroke-linecap="round"/>
+          <rect x="12" y="14" width="7" height="2.6" rx="1.3" fill="#fff" transform="rotate(-30 15 15)"/>
+          <rect x="38" y="12" width="7" height="2.6" rx="1.3" fill="#ffd23f" transform="rotate(25 41 13)"/>
+          <rect x="44" y="30" width="7" height="2.6" rx="1.3" fill="#7fd6c8" transform="rotate(70 47 31)"/>
+        </svg>
+        <span class="logo-text">Q! <b>Donuts</b><small>Araras</small></span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#contato">Contato</a>
+        <a class="btn btn-wpp nav-wpp" data-wpp href="#" target="_blank" rel="noopener">Peça pelo WhatsApp</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-wpp head-wpp" data-wpp href="#" target="_blank" rel="noopener">Peça pelo WhatsApp</a>
+        <button class="cart-btn" id="openCart" type="button" aria-label="Abrir meu pedido">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h13l-1.4 8.2a2 2 0 0 1-2 1.6H9.4a2 2 0 0 1-2-1.6L5.5 4H3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.3" fill="currentColor"/><circle cx="17" cy="20" r="1.3" fill="currentColor"/></svg>
+          <span class="cart-count" id="cartCount" aria-live="polite">0</span>
+        </button>
+        <button class="burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio" aria-labelledby="heroTitulo">
+      <div class="sprinkles" aria-hidden="true" id="heroSprinkles"></div>
+      <div class="container hero-in">
+        <div class="hero-text">
+          <h1 id="heroTitulo">Seu momento mais doce começa aqui!</h1>
+          <p>Donuts irresistíveis, sabores incríveis e momentos especiais em cada mordida.</p>
+          <div class="hero-btns">
+            <a href="#cardapio" class="btn btn-primary">Conheça nosso cardápio</a>
+            <a href="#cardapio" class="btn btn-outline" data-open-cart>Faça seu pedido</a>
+          </div>
+          <p class="hero-local">Donuts e doces em Araras, SP</p>
+        </div>
+        <div class="hero-art" id="heroArt" aria-label="Pilha de donuts coloridos com glacê e confeitos (ilustração)" role="img"></div>
+      </div>
+      <svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 C200 100 420 0 700 45 S1180 95 1440 35 V90 H0Z"/></svg>
+    </section>
+
+    <!-- ============ CARDÁPIO ============ -->
+    <section class="section menu" id="cardapio" aria-labelledby="menuTitulo">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="menuTitulo">Nosso Cardápio</h2>
+          <p>Descubra sabores que transformam qualquer momento em uma experiência especial.</p>
+        </header>
+        <div class="grid-menu" id="menuGrid"></div>
+        <p class="note" id="priceNote" hidden>Produtos, descrições e valores são exemplos editáveis. Confirme os preços oficiais com a loja pelo WhatsApp.</p>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE ============ -->
+    <section class="section about" id="sobre" aria-labelledby="sobreTitulo">
+      <div class="container about-in">
+        <div class="about-art" id="aboutArt" role="img" aria-label="Caixa com donuts variados (ilustração)"></div>
+        <div class="about-text">
+          <h2 id="sobreTitulo">Mais que donuts, momentos especiais!</h2>
+          <p>Nada se compara ao primeiro contato com um donut fresquinho: massa macia, cobertura brilhante e aquele recheio que surpreende na primeira mordida.</p>
+          <p>Aqui, cada donut é pensado para deixar o seu dia mais gostoso. Combinamos sabor, criatividade e carinho em sabores clássicos e ideias novas, para você dividir com quem gosta ou aproveitar sem pressa, com um café na mão.</p>
+          <p>Escolha seus favoritos, monte o pedido em poucos toques e finalize pelo WhatsApp. É simples assim.</p>
+          <a href="#cardapio" class="btn btn-primary">Escolher meus donuts</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DIFERENCIAIS ============ -->
+    <section class="section perks" aria-labelledby="difTitulo">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="difTitulo">O que torna cada pedido especial</h2>
+        </header>
+        <ul class="perk-grid">
+          <li class="perk">
+            <span class="perk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.3-9.2C1.4 8.4 3.4 5 6.8 5c2 0 3.6 1.1 5.2 3 1.6-1.9 3.2-3 5.2-3 3.4 0 5.4 3.400 4.100 6.800C19.500 16.400 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <h3>Sabores irresistíveis</h3>
+            <p>Coberturas cremosas e recheios generosos.</p>
+          </li>
+          <li class="perk">
+            <span class="perk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.500" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.800" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7.500 7.800l1.200.9M15.500 6.800l-.5 1.300M16.800 14.500l-1.300-.4M8.500 16l.8-1.100" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <h3>Variedade de donuts</h3>
+            <p>Do clássico de chocolate ao especial da casa.</p>
+          </li>
+          <li class="perk">
+            <span class="perk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.300 5.200 5.700.6-4.300 3.800 1.200 5.600L12 15.300 7.100 18.200l1.200-5.600L4 8.800l5.700-.6L12 3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <h3>Experiência especial</h3>
+            <p>Para dividir, presentear ou saborear sem pressa.</p>
+          </li>
+          <li class="perk">
+            <span class="perk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <h3>Pedidos práticos</h3>
+            <p>Monte o carrinho e finalize pelo WhatsApp.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ GALERIA ============ -->
+    <section class="section gallery" id="galeria" aria-labelledby="galTitulo">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="galTitulo">Galeria de sabores</h2>
+          <p>Uma amostra do que você encontra por aqui.</p>
+        </header>
+        <div class="gal-grid" id="galGrid"></div>
+        <p class="note">Imagens ilustrativas. Substitua pelas fotos reais da loja no arquivo js/config.js.</p>
+      </div>
+    </section>
+
+    <!-- ============ DEPOIMENTOS ============ -->
+    <section class="section reviews" aria-labelledby="depTitulo">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="depTitulo">Quem prova, volta</h2>
+          <p>Espaço reservado para avaliações reais dos nossos clientes.</p>
+        </header>
+        <div class="rev-grid" id="revGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ FAIXA INSTAGRAM ============ -->
+    <section class="community" aria-labelledby="comTitulo">
+      <svg class="wave wave-top" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C260 -10 520 90 800 45 S1220 10 1440 55 V0 H0Z"/></svg>
+      <div class="community-art" id="communityArt" aria-hidden="true"></div>
+      <div class="container">
+        <div class="glass">
+          <h2 id="comTitulo">Entre na nossa comunidade doce!</h2>
+          <p id="comTexto">Acompanhe novidades, sabores da temporada e promoções pelo nosso WhatsApp.</p>
+          <div class="glass-btns">
+            <a class="btn btn-primary" id="comInsta" data-insta href="#" target="_blank" rel="noopener" hidden>Seguir no Instagram</a>
+            <a class="btn btn-wpp" data-wpp href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section class="section contact" id="contato" aria-labelledby="contTitulo">
+      <div class="container contact-in">
+        <div>
+          <h2 id="contTitulo">Venha nos visitar</h2>
+          <p class="contact-lead">Q! Donuts Araras, Araras, SP.</p>
+          <dl class="info">
+            <div><dt>Endereço</dt><dd id="infoEndereco"></dd></div>
+            <div><dt>WhatsApp</dt><dd><a data-wpp-text href="#" target="_blank" rel="noopener"></a></dd></div>
+            <div><dt>Instagram</dt><dd id="infoInsta"><a data-insta-text href="#" target="_blank" rel="noopener"></a></dd></div>
+            <div><dt>Horário de funcionamento</dt><dd id="infoHorarios"></dd></div>
+          </dl>
+          <a class="btn btn-primary" id="mapsBtn" href="#" target="_blank" rel="noopener" hidden>Abrir no Google Maps</a>
+        </div>
+        <div class="contact-card" aria-hidden="true" id="contactArt"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="footer">
+    <div class="container footer-in">
+      <div class="f-brand">
+        <a href="#inicio" class="logo" aria-label="Q! Donuts Araras - voltar ao topo">
+          <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="30" cy="32" r="22" fill="none" stroke="#ff4d94" stroke-width="12"/>
+            <path d="M36 42 L52 58" stroke="#4a2418" stroke-width="7" stroke-linecap="round"/>
+          </svg>
+          <span class="logo-text">Q! <b>Donuts</b><small>Araras</small></span>
+        </a>
+        <p>Donuts macios, coberturas cremosas e recheios generosos para adoçar o seu dia em Araras, SP.</p>
+      </div>
+      <div>
+        <h3>Navegue</h3>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#cardapio">Cardápio</a></li>
+          <li><a href="#sobre">Sobre nós</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Fale com a gente</h3>
+        <ul>
+          <li><a data-wpp-text href="#" target="_blank" rel="noopener"></a></li>
+          <li id="footInstaItem" hidden><a data-insta-text href="#" target="_blank" rel="noopener"></a></li>
+          <li id="footMapsItem" hidden><a href="#" target="_blank" rel="noopener" id="footMaps"></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container copy">
+      <p>&copy; <span id="ano"></span> Q! Donuts Araras. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a class="fab" data-wpp href="#" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2Zm5.800 14.200c-.2.700-1.400 1.300-1.900 1.300-.5.100-1.100.100-1.800-.100-.4-.1-.9-.3-1.600-.6-2.800-1.200-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800 0-1.300.7-2 1-2.300.3-.3.600-.3.800-.3h.600c.2 0 .4 0 .6.500.2.600.8 1.900.9 2 .1.100.1.300 0 .4-.1.200-.1.300-.3.500l-.4.500c-.1.100-.3.300-.1.600.2.300.7 1.200 1.500 1.900 1 .9 1.900 1.200 2.200 1.300.3.100.4.100.6-.1.2-.2.700-.8.900-1.100.2-.3.400-.2.600-.1l1.800.9c.3.100.5.200.5.300.1.200.1.800-.1 1.400Z"/></svg>
+  </a>
+
+  <!-- ============ CARRINHO ============ -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitulo" aria-hidden="true">
+    <div class="drawer-head">
+      <h2 id="drawerTitulo">Meu pedido</h2>
+      <button type="button" class="close" id="closeCart" aria-label="Fechar pedido">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <ul class="cart-list" id="cartList"></ul>
+      <p class="cart-empty" id="cartEmpty">Seu pedido está vazio. Escolha seus donuts no cardápio.</p>
+
+      <div class="cart-form" id="cartForm">
+        <label for="nome">Seu nome</label>
+        <input id="nome" type="text" autocomplete="name" placeholder="Como podemos te chamar?">
+        <p class="err" id="nomeErr" hidden>Informe seu nome para finalizar o pedido.</p>
+
+        <label for="obs">Observações</label>
+        <textarea id="obs" rows="3" placeholder="Ex.: retirar na loja, horário desejado, alergias..."></textarea>
+      </div>
+    </div>
+
+    <div class="drawer-foot">
+      <div class="row"><span>Subtotal</span><span id="subtotal">R$ 0,00</span></div>
+      <div class="row total"><span>Total</span><strong id="total">R$ 0,00</strong></div>
+      <button type="button" class="btn btn-wpp btn-block" id="checkout">Finalizar pedido pelo WhatsApp</button>
+      <button type="button" class="link-btn" id="clearCart">Limpar pedido</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ===== CONFIGURAÇÃO DA LOJA (edite aqui) ===== -->
+  <script>
+/* ==========================================================
+   Q! DONUTS ARARAS - CONFIGURAÇÃO
+   Edite este arquivo para atualizar dados da loja, produtos,
+   preços, fotos, galeria e depoimentos. Não precisa mexer
+   em mais nada.
+   ========================================================== */
+window.QDONUTS = {
+  loja: {
+    nome: "Q! Donuts Araras",
+
+    // WhatsApp: código do país + DDD + número (somente dígitos)
+    whatsapp: { ddi: "55", numero: "19998705938" },
+
+    // Instagram: apenas o usuário, sem @. Vazio = o site esconde os botões
+    // e mostra "A informar". Ex.: "minhaloja"
+    instagram: "",
+
+    // Endereço completo. Vazio = o site esconde o botão do Google Maps.
+    // Ex.: "Rua Exemplo, 123 - Centro, Araras - SP"
+    endereco: "",
+
+    // Horário de funcionamento ainda não informado.
+    // Preencha assim: ["Segunda a sexta: 9h às 18h", "Sábado: 9h às 14h"]
+    horarios: [],
+
+    // Mensagem inicial dos botões gerais de WhatsApp
+    mensagemPadrao: "Olá, Q! Donuts Araras! Gostaria de fazer um pedido."
+  },
+
+  // Mostra o aviso "valores de exemplo" abaixo do cardápio.
+  // Troque para false quando os preços forem os oficiais.
+  mostrarAvisoPrecos: true,
+
+  /* Produtos. "imagem" é opcional: coloque o caminho de uma foto
+     (ex.: "img/chocolate.jpg") e ela substitui a ilustração.
+     Os preços abaixo são EXEMPLOS. */
+  produtos: [
+    { id: "chocolate", nome: "Donut de Chocolate",
+      descricao: "Donut macio com cobertura de chocolate e acabamento irresistível.",
+      preco: 7.5, imagem: "", arte: "chocolate" },
+    { id: "morango", nome: "Donut de Morango",
+      descricao: "Donut delicado com cobertura de morango e confeitos.",
+      preco: 7.5, imagem: "", arte: "morango" },
+    { id: "nutella", nome: "Donut de Nutella",
+      descricao: "Donut recheado com creme de avelã e cobertura especial.",
+      preco: 9.5, imagem: "", arte: "nutella" },
+    { id: "doce-de-leite", nome: "Donut de Doce de Leite",
+      descricao: "Donut recheado com doce de leite cremoso.",
+      preco: 9.0, imagem: "", arte: "doceleite" },
+    { id: "oreo", nome: "Donut de Oreo",
+      descricao: "Donut com cobertura de chocolate branco e pedaços de biscoito.",
+      preco: 9.5, imagem: "", arte: "oreo" },
+    { id: "colorido", nome: "Donut Colorido",
+      descricao: "Donut com cobertura colorida e confeitos divertidos.",
+      preco: 7.0, imagem: "", arte: "colorido" },
+    { id: "chocolate-branco", nome: "Donut de Chocolate Branco",
+      descricao: "Donut com cobertura cremosa de chocolate branco.",
+      preco: 8.0, imagem: "", arte: "branco" },
+    { id: "especial", nome: "Donut Especial da Casa",
+      descricao: "Uma combinação exclusiva de sabores criada para surpreender.",
+      preco: 10.0, imagem: "", arte: "casa" }
+  ],
+
+  /* Galeria. tipo: "unico" | "combo" | "caixa".
+     Se informar "imagem", a foto substitui a ilustração. */
+  galeria: [
+    { tipo: "unico", artes: ["chocolate"],  legenda: "Cobertura de chocolate", fundo: "#ffc2da", imagem: "" },
+    { tipo: "unico", artes: ["colorido"],   legenda: "Confeitos coloridos",    fundo: "#cdeee8", imagem: "" },
+    { tipo: "caixa", artes: ["nutella","doceleite","oreo","morango","casa","branco"], legenda: "Caixa de donuts", fundo: "#ffe3b8", imagem: "" },
+    { tipo: "unico", artes: ["nutella"],    legenda: "Recheados",              fundo: "#ffd1c2", imagem: "" },
+    { tipo: "combo", artes: ["morango","colorido","branco"], legenda: "Combinações para dividir", fundo: "#e7ddff", imagem: "" },
+    { tipo: "unico", artes: ["casa"],       legenda: "Especial da casa",       fundo: "#ffc2da", imagem: "" }
+  ],
+
+  /* Depoimentos: placeholders. Troque por avaliações reais e
+     mude "placeholder" para false. */
+  depoimentos: [
+    { nome: "Nome do cliente", comentario: "Espaço reservado para o comentário de um cliente real.", nota: 5, placeholder: true },
+    { nome: "Nome do cliente", comentario: "Espaço reservado para o comentário de um cliente real.", nota: 5, placeholder: true },
+    { nome: "Nome do cliente", comentario: "Espaço reservado para o comentário de um cliente real.", nota: 5, placeholder: true }
+  ]
+};
+
+  </script>
+  <script>
+/* Gera donuts em SVG (ilustrações). Para usar fotos reais,
+   preencha o campo "imagem" em js/config.js. */
+(function () {
+  var MULTI = ["#ff4d94", "#2ec4b6", "#ffd23f", "#6c5ce7", "#ff8c42", "#ffffff"];
+
+  var PRESETS = {
+    chocolate: { glaze: "#5a2e1c", sprinkles: ["#f3d9c4"], count: 10, seed: 11 },
+    morango:   { glaze: "#ff8fb8", sprinkles: MULTI, count: 36, seed: 22 },
+    nutella:   { glaze: "#4b2a1c", sprinkles: ["#c9a36a", "#e5c892", "#a8793f"], count: 26, drizzle: "#8a5a3a", seed: 33 },
+    doceleite: { glaze: "#d9a050", sprinkles: ["#fff0d0"], count: 8, drizzle: "#fff0d0", seed: 44 },
+    oreo:      { glaze: "#fff4ea", crumbs: true, drizzle: "#4a2a1c", seed: 55 },
+    colorido:  { glaze: "#7fd6c8", sprinkles: MULTI, count: 40, seed: 66 },
+    branco:    { glaze: "#fff7ee", sprinkles: ["#f8c8dc", "#ffffff"], count: 12, seed: 77 },
+    casa:      { glaze: "#ff4d94", sprinkles: MULTI, count: 24, drizzle: "#fff7ee", seed: 88 },
+    baunilha:  { glaze: "#ffe6c9", sprinkles: MULTI, count: 34, seed: 99 }
+  };
+
+  var uid = 0;
+
+  function rng(seed) {
+    var s = (seed >>> 0) || 1;
+    return function () {
+      s = (s * 1664525 + 1013904223) >>> 0;
+      return s / 4294967296;
+    };
+  }
+
+  function mix(hex, to, t) {
+    var a = parseInt(hex.slice(1), 16), b = parseInt(to.slice(1), 16);
+    var r = Math.round(((a >> 16) & 255) * (1 - t) + ((b >> 16) & 255) * t);
+    var g = Math.round(((a >> 8) & 255) * (1 - t) + ((b >> 8) & 255) * t);
+    var bl = Math.round((a & 255) * (1 - t) + (b & 255) * t);
+    return "rgb(" + r + "," + g + "," + bl + ")";
+  }
+
+  function glazePath(r, rnd) {
+    var ph = [rnd() * 6.28, rnd() * 6.28, rnd() * 6.28], pts = [], n = 96, i, t, rr;
+    for (i = 0; i < n; i++) {
+      t = (i / n) * 2 * Math.PI;
+      rr = r + 3.2 * Math.sin(5 * t + ph[0]) + 2.2 * Math.sin(8 * t + ph[1]) + 1.4 * Math.sin(13 * t + ph[2]);
+      pts.push((100 + rr * Math.cos(t)).toFixed(1) + " " + (100 + rr * Math.sin(t)).toFixed(1));
+    }
+    return "M" + pts.join("L") + "Z";
+  }
+
+  function donut(name, label) {
+    var p = PRESETS[name] || PRESETS.morango;
+    var id = "d" + (++uid), rnd = rng(p.seed || 7), out = "", i, a, rad, x, y, col, rot;
+
+    out += '<svg class="donut" viewBox="0 0 200 200" role="img" aria-label="' + (label || "Donut (ilustração)") + '" xmlns="http://www.w3.org/2000/svg">';
+    out += "<defs>";
+    out += '<radialGradient id="' + id + 'a" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#f3c887"/><stop offset=".7" stop-color="#d9964f"/><stop offset="1" stop-color="#b9732f"/></radialGradient>';
+    out += '<radialGradient id="' + id + 'g" cx="36%" cy="30%" r="80%"><stop offset="0" stop-color="' + mix(p.glaze, "#ffffff", 0.32) + '"/><stop offset=".65" stop-color="' + p.glaze + '"/><stop offset="1" stop-color="' + mix(p.glaze, "#000000", 0.16) + '"/></radialGradient>';
+    out += '<mask id="' + id + 'm"><rect width="200" height="200" fill="#fff"/><circle cx="100" cy="100" r="27" fill="#000"/></mask>';
+    out += '<clipPath id="' + id + 'c"><circle cx="100" cy="100" r="72"/></clipPath>';
+    out += "</defs>";
+
+    out += '<g mask="url(#' + id + 'm)">';
+    out += '<circle cx="100" cy="100" r="90" fill="url(#' + id + 'a)"/>';
+    out += '<path d="' + glazePath(76, rnd) + '" fill="url(#' + id + 'g)"/>';
+
+    if (p.drizzle) {
+      out += '<g clip-path="url(#' + id + 'c)" fill="none" stroke="' + p.drizzle + '" stroke-width="3.2" stroke-linecap="round" opacity=".95">';
+      for (i = 0; i < 6; i++) {
+        a = rnd() * Math.PI;
+        var x1 = 100 + 80 * Math.cos(a), y1 = 100 + 80 * Math.sin(a);
+        var x2 = 100 - 80 * Math.cos(a + 0.3), y2 = 100 - 80 * Math.sin(a + 0.3);
+        var cx = 100 + (rnd() - 0.5) * 70, cy = 100 + (rnd() - 0.5) * 70;
+        out += '<path d="M' + x1.toFixed(1) + " " + y1.toFixed(1) + " Q" + cx.toFixed(1) + " " + cy.toFixed(1) + " " + x2.toFixed(1) + " " + y2.toFixed(1) + '"/>';
+      }
+      out += "</g>";
+    }
+
+    if (p.crumbs) {
+      for (i = 0; i < 30; i++) {
+        a = rnd() * 6.283; rad = 34 + rnd() * 36;
+        x = 100 + rad * Math.cos(a); y = 100 + rad * Math.sin(a);
+        var w = 4 + rnd() * 6, h = 3 + rnd() * 5;
+        out += '<rect x="' + (x - w / 2).toFixed(1) + '" y="' + (y - h / 2).toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h.toFixed(1) + '" rx="1.2" fill="' + (rnd() > 0.35 ? "#2b2020" : "#5d4a4a") + '" transform="rotate(' + Math.round(rnd() * 180) + " " + x.toFixed(1) + " " + y.toFixed(1) + ')"/>';
+      }
+    }
+
+    if (p.sprinkles) {
+      for (i = 0; i < (p.count || 24); i++) {
+        a = rnd() * 6.283; rad = 35 + rnd() * 35;
+        x = 100 + rad * Math.cos(a); y = 100 + rad * Math.sin(a);
+        col = p.sprinkles[Math.floor(rnd() * p.sprinkles.length)];
+        rot = Math.round(rnd() * 180);
+        out += '<rect x="' + (x - 5).toFixed(1) + '" y="' + (y - 1.6).toFixed(1) + '" width="10" height="3.4" rx="1.7" fill="' + col + '" transform="rotate(' + rot + " " + x.toFixed(1) + " " + y.toFixed(1) + ')"/>';
+      }
+    }
+
+    out += '<circle cx="100" cy="100" r="29" fill="none" stroke="rgba(80,35,10,.35)" stroke-width="5"/>';
+    out += '<ellipse cx="72" cy="58" rx="26" ry="9" fill="#fff" opacity=".28" transform="rotate(-32 72 58)"/>';
+    out += "</g></svg>";
+    return out;
+  }
+
+  window.DonutArt = {
+    presets: PRESETS,
+    donut: donut,
+
+    /* tipo: unico | combo | caixa */
+    compose: function (tipo, artes, label) {
+      var html = "", i;
+      if (tipo === "caixa") {
+        html = '<div class="box" role="img" aria-label="' + (label || "Caixa de donuts (ilustração)") + '"><div class="box-grid">';
+        for (i = 0; i < artes.length; i++) html += '<div class="box-cell">' + donut(artes[i], "") + "</div>";
+        html += "</div></div>";
+      } else if (tipo === "combo") {
+        html = '<div class="combo" role="img" aria-label="' + (label || "Combinação de donuts (ilustração)") + '">';
+        for (i = 0; i < artes.length; i++) html += '<div class="combo-d combo-' + i + '">' + donut(artes[i], "") + "</div>";
+        html += "</div>";
+      } else {
+        html = '<div class="single">' + donut(artes[0], label) + "</div>";
+      }
+      return html;
+    }
+  };
+})();
+
+  </script>
+  <script>
+(function () {
+  "use strict";
+
+  var C = window.QDONUTS;
+  var Art = window.DonutArt;
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var brl = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  /* ---------- Links de contato ---------- */
+  var numeroCompleto = C.loja.whatsapp.ddi + C.loja.whatsapp.numero;
+  function waLink(texto) {
+    return "https://wa.me/" + numeroCompleto + "?text=" + encodeURIComponent(texto);
+  }
+  function foneBonito() {
+    var n = C.loja.whatsapp.numero;
+    return "(" + n.slice(0, 2) + ") " + n.slice(2, 7) + "-" + n.slice(7);
+  }
+  var temInsta = !!C.loja.instagram, temEnd = !!C.loja.endereco;
+  var instaUrl = temInsta ? "https://www.instagram.com/" + C.loja.instagram : "#";
+  var mapsUrl = temEnd ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(C.loja.endereco) : "#";
+
+  $$("[data-wpp]").forEach(function (a) { a.href = waLink(C.loja.mensagemPadrao); });
+  $$("[data-wpp-text]").forEach(function (a) { a.href = waLink(C.loja.mensagemPadrao); a.textContent = foneBonito(); });
+
+  // Instagram: só aparece se estiver preenchido em config.js
+  $$("[data-insta]").forEach(function (a) { a.href = instaUrl; a.hidden = !temInsta; });
+  $$("[data-insta-text]").forEach(function (a) {
+    if (temInsta) { a.href = instaUrl; a.textContent = "@" + C.loja.instagram; }
+  });
+  $("#footInstaItem").hidden = !temInsta;
+  if (temInsta) $("#comTexto").textContent = "Acompanhe novidades, sabores da temporada e promoções no nosso Instagram.";
+  if (!temInsta) {
+    var ii = $("#infoInsta");
+    ii.innerHTML = '<span class="vazio">A informar</span>';
+  }
+
+  // Endereço: o botão do mapa só aparece se estiver preenchido
+  $("#mapsBtn").href = mapsUrl; $("#mapsBtn").hidden = !temEnd;
+  $("#footMapsItem").hidden = !temEnd;
+  var fm = $("#footMaps"); fm.href = mapsUrl; fm.textContent = "Ver localização no mapa";
+  if (temEnd) $("#infoEndereco").textContent = C.loja.endereco;
+  else $("#infoEndereco").innerHTML = '<span class="vazio">A informar</span>';
+  $("#infoHorarios").innerHTML = C.loja.horarios.length
+    ? C.loja.horarios.map(esc).join("<br>")
+    : '<span class="vazio">A informar</span>';
+  $("#ano").textContent = new Date().getFullYear();
+  if (C.mostrarAvisoPrecos) $("#priceNote").hidden = false;
+
+  /* ---------- Hero ---------- */
+  $("#heroArt").innerHTML =
+    '<div class="stack s1">' + Art.donut("baunilha", "") + "</div>" +
+    '<div class="stack s2">' + Art.donut("morango", "") + "</div>" +
+    '<div class="stack s3">' + Art.donut("chocolate", "") + "</div>";
+
+  (function sprinkles() {
+    var cores = ["#ff4d94", "#2ec4b6", "#ffd23f", "#6c5ce7", "#ff8c42"], html = "", i, s = 5;
+    function r() { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }
+    for (i = 0; i < 26; i++) {
+      html += '<i style="left:' + (r() * 100).toFixed(1) + "%;top:" + (r() * 100).toFixed(1) + "%;background:" + cores[i % 5] + ";transform:rotate(" + Math.round(r() * 180) + 'deg)"></i>';
+    }
+    $("#heroSprinkles").innerHTML = html;
+  })();
+
+  /* ---------- Sobre / comunidade / contato (arte) ---------- */
+  $("#aboutArt").innerHTML = Art.compose("caixa", ["nutella", "morango", "oreo", "colorido"], "Caixa com donuts variados (ilustração)");
+  $("#communityArt").innerHTML =
+    '<div class="ca ca1">' + Art.donut("morango", "") + "</div>" +
+    '<div class="ca ca2">' + Art.donut("colorido", "") + "</div>" +
+    '<div class="ca ca3">' + Art.donut("casa", "") + "</div>";
+  $("#contactArt").innerHTML = Art.compose("combo", ["casa", "colorido", "branco"], "");
+
+  /* ---------- Cardápio ---------- */
+  function produtoArte(p) {
+    if (p.imagem) return '<img src="' + esc(p.imagem) + '" alt="' + esc(p.nome) + '" loading="lazy">';
+    return Art.donut(p.arte, p.nome + " (ilustração)");
+  }
+
+  $("#menuGrid").innerHTML = C.produtos.map(function (p) {
+    return '<article class="card">' +
+      '<div class="card-art"><span class="ring" aria-hidden="true"></span><div class="card-donut">' + produtoArte(p) + "</div></div>" +
+      "<h3>" + esc(p.nome) + "</h3>" +
+      "<p>" + esc(p.descricao) + "</p>" +
+      '<div class="card-foot"><span class="preco">' + brl.format(p.preco) + "</span>" +
+      '<button type="button" class="btn btn-add" data-add="' + esc(p.id) + '">Adicionar ao pedido</button></div>' +
+      "</article>";
+  }).join("");
+
+  /* ---------- Galeria ---------- */
+  $("#galGrid").innerHTML = C.galeria.map(function (g, i) {
+    var arte = g.imagem
+      ? '<img src="' + esc(g.imagem) + '" alt="' + esc(g.legenda) + '" loading="lazy">'
+      : Art.compose(g.tipo, g.artes, g.legenda + " (ilustração)");
+    return '<figure class="gal gal-' + (i + 1) + '" style="--bg:' + esc(g.fundo) + '">' +
+      '<div class="gal-art">' + arte + "</div><figcaption>" + esc(g.legenda) + "</figcaption></figure>";
+  }).join("");
+
+  /* ---------- Depoimentos ---------- */
+  function estrelas(n, vazio) {
+    var s = "", i;
+    for (i = 0; i < 5; i++) {
+      s += '<svg viewBox="0 0 24 24" class="' + ((i < n && !vazio) ? "on" : "off") + '" aria-hidden="true"><path d="M12 3l2.600 5.600 6 .7-4.500 4.100 1.200 6L12 16.400 6.700 19.400l1.200-6L3.400 9.300l6-.7L12 3Z"/></svg>';
+    }
+    return s;
+  }
+  $("#revGrid").innerHTML = C.depoimentos.map(function (d) {
+    return '<figure class="rev' + (d.placeholder ? " is-placeholder" : "") + '">' +
+      '<div class="stars" role="img" aria-label="' + (d.placeholder ? "Avaliação ainda não disponível" : "Nota " + d.nota + " de 5") + '">' + estrelas(d.nota, d.placeholder) + "</div>" +
+      "<blockquote>" + esc(d.comentario) + "</blockquote>" +
+      "<figcaption>" + esc(d.nome) + "</figcaption></figure>";
+  }).join("");
+
+  /* ---------- Menu mobile ---------- */
+  var burger = $("#burger"), nav = $("#nav");
+  function setNav(open) {
+    nav.classList.toggle("open", open);
+    burger.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+  }
+  burger.addEventListener("click", function () { setNav(!nav.classList.contains("open")); });
+  $$("a", nav).forEach(function (a) { a.addEventListener("click", function () { setNav(false); }); });
+
+  var header = $(".header");
+  function onScroll() { header.classList.toggle("scrolled", window.scrollY > 8); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Carrinho ---------- */
+  var KEY = "qdonuts-pedido";
+  var cart = {}; // id -> quantidade
+  try { cart = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { cart = {}; }
+
+  var porId = {};
+  C.produtos.forEach(function (p) { porId[p.id] = p; });
+  Object.keys(cart).forEach(function (id) { if (!porId[id]) delete cart[id]; });
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {} }
+  function qtdTotal() { return Object.keys(cart).reduce(function (s, id) { return s + cart[id]; }, 0); }
+  function valorTotal() { return Object.keys(cart).reduce(function (s, id) { return s + cart[id] * porId[id].preco; }, 0); }
+
+  var drawer = $("#drawer"), overlay = $("#overlay"), lastFocus = null;
+
+  function renderCart() {
+    var ids = Object.keys(cart), list = $("#cartList");
+    list.innerHTML = ids.map(function (id) {
+      var p = porId[id], q = cart[id];
+      return '<li class="ci">' +
+        '<div class="ci-thumb">' + produtoArte(p) + "</div>" +
+        '<div class="ci-info"><strong>' + esc(p.nome) + "</strong><span>" + brl.format(p.preco) + " cada</span>" +
+        '<div class="qty"><button type="button" data-dec="' + esc(id) + '" aria-label="Diminuir quantidade de ' + esc(p.nome) + '">&minus;</button>' +
+        '<output aria-label="Quantidade">' + q + "</output>" +
+        '<button type="button" data-inc="' + esc(id) + '" aria-label="Aumentar quantidade de ' + esc(p.nome) + '">+</button></div></div>' +
+        '<div class="ci-side"><strong>' + brl.format(q * p.preco) + "</strong>" +
+        '<button type="button" class="rm" data-rm="' + esc(id) + '" aria-label="Remover ' + esc(p.nome) + '">Remover</button></div>' +
+        "</li>";
+    }).join("");
+
+    var vazio = ids.length === 0;
+    $("#cartEmpty").hidden = !vazio;
+    $("#cartForm").hidden = vazio;
+    $("#checkout").disabled = vazio;
+    $("#clearCart").hidden = vazio;
+    $("#subtotal").textContent = brl.format(valorTotal());
+    $("#total").textContent = brl.format(valorTotal());
+
+    var n = qtdTotal(), badge = $("#cartCount");
+    badge.textContent = n;
+    badge.classList.toggle("has", n > 0);
+  }
+
+  function bump() {
+    var b = $("#openCart");
+    b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump");
+  }
+
+  var toastTimer;
+  function toast(msg) {
+    var t = $("#toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove("show"); }, 2200);
+  }
+
+  function add(id, btn) {
+    cart[id] = (cart[id] || 0) + 1;
+    save(); renderCart(); bump();
+    toast(porId[id].nome + " adicionado ao pedido");
+    if (btn) {
+      var original = btn.getAttribute("data-label") || btn.textContent;
+      btn.setAttribute("data-label", original);
+      btn.classList.add("added");
+      btn.textContent = "Adicionado";
+      clearTimeout(btn._t);
+      btn._t = setTimeout(function () { btn.classList.remove("added"); btn.textContent = original; }, 1300);
+    }
+  }
+
+  function setQty(id, q) {
+    if (q <= 0) delete cart[id]; else cart[id] = q;
+    save(); renderCart();
+  }
+
+  function openCart() {
+    lastFocus = document.activeElement;
+    drawer.classList.add("open");
+    drawer.setAttribute("aria-hidden", "false");
+    overlay.hidden = false;
+    requestAnimationFrame(function () { overlay.classList.add("show"); });
+    document.body.classList.add("lock");
+    $("#closeCart").focus();
+  }
+  function closeCart() {
+    drawer.classList.remove("open");
+    drawer.setAttribute("aria-hidden", "true");
+    overlay.classList.remove("show");
+    document.body.classList.remove("lock");
+    setTimeout(function () { overlay.hidden = true; }, 250);
+    if (lastFocus) lastFocus.focus();
+  }
+
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest("button, a");
+    if (!t) return;
+    if (t.hasAttribute("data-add")) return add(t.getAttribute("data-add"), t);
+    if (t.hasAttribute("data-inc")) { var a = t.getAttribute("data-inc"); return setQty(a, cart[a] + 1); }
+    if (t.hasAttribute("data-dec")) { var b = t.getAttribute("data-dec"); return setQty(b, cart[b] - 1); }
+    if (t.hasAttribute("data-rm")) return setQty(t.getAttribute("data-rm"), 0);
+    if (t.hasAttribute("data-open-cart") && qtdTotal() > 0) { /* já tem itens: abre o pedido */ e.preventDefault(); openCart(); }
+  });
+
+  $("#openCart").addEventListener("click", openCart);
+  $("#closeCart").addEventListener("click", closeCart);
+  overlay.addEventListener("click", closeCart);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      if (drawer.classList.contains("open")) closeCart();
+      else if (nav.classList.contains("open")) setNav(false);
+    }
+    if (e.key === "Tab" && drawer.classList.contains("open")) {
+      var f = $$("button:not([disabled]), input, textarea, a[href]", drawer).filter(function (el) { return el.offsetParent !== null; });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  $("#clearCart").addEventListener("click", function () {
+    cart = {}; save(); renderCart();
+  });
+
+  $("#nome").addEventListener("input", function () { $("#nomeErr").hidden = true; });
+
+  /* ---------- Finalizar pelo WhatsApp ---------- */
+  $("#checkout").addEventListener("click", function () {
+    var ids = Object.keys(cart);
+    if (!ids.length) return;
+    var nome = $("#nome").value.trim();
+    if (!nome) {
+      $("#nomeErr").hidden = false;
+      $("#nome").focus();
+      return;
+    }
+    var obs = $("#obs").value.trim();
+    var linhas = ["Olá, " + C.loja.nome + "! Gostaria de fazer um pedido:", "", "*Cliente:* " + nome, "", "*Itens:*"];
+    ids.forEach(function (id) {
+      var p = porId[id], q = cart[id];
+      linhas.push("• " + q + "x " + p.nome + " (" + brl.format(p.preco) + " cada) = " + brl.format(q * p.preco));
+    });
+    linhas.push("", "*Total:* " + brl.format(valorTotal()));
+    linhas.push("", "*Observações:* " + (obs || "Nenhuma"));
+    window.open(waLink(linhas.join("\n")), "_blank", "noopener");
+  });
+
+  renderCart();
+})();
+
+  </script>
+</body>
+</html>
